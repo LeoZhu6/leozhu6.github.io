@@ -2197,4 +2197,22 @@
     event.stopPropagation();
     changeDeckSlide(-1);
   });
-  document.getElementById('deckNextSide').addEventListener('cli
+  document.getElementById('deckNextSide').addEventListener('click', event => {
+    event.stopPropagation();
+    changeDeckSlide(1);
+  });
+  deckSlide.addEventListener('click', () => changeDeckSlide(1));
+  deckModal.addEventListener('click', event => {
+    if (event.target === deckModal) closeDeck();
+  });
+  window.addEventListener('keydown', event => {
+    if (!activeDeck) return;
+    if (event.key === 'Escape') closeDeck();
+    if (event.key === 'ArrowLeft') changeDeckSlide(-1);
+    if (event.key === 'ArrowRight') changeDeckSlide(1);
+  });
+
+</script>
+
+</body>
+</html>
