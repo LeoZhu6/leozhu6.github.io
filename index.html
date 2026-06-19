@@ -14,7 +14,7 @@
 <title>Runze Zhu — Biotech Finance Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;450;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300;400;450;500;600&display=swap" rel="stylesheet">
 <style>
   /* ============================================
      Anthropic Design System
@@ -23,7 +23,7 @@
     /* Colors */
     --bg:           #FAF8F2;
     --bg-warm:      #F1ECE2;
-    --bg-dark:      #25251F;
+    --bg-dark:      #1F3A2D;
     --bg-mid:       #E8E0D3;
     --ink:          #191714;
     --ink-60:       rgba(25,23,20,0.62);
@@ -36,7 +36,7 @@
     --border:       rgba(25,23,20,0.12);
 
     /* Typography */
-    --serif:  'Playfair Display', 'Georgia', 'Times New Roman', serif;
+    --serif:  'Fraunces', 'Georgia', 'Times New Roman', serif;
     --sans:   'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
     /* Scale */
@@ -99,58 +99,25 @@
     background: var(--bg);
   }
 
-  .cursor-orb,
-  .cursor-ring,
-  .cursor-dot {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 999;
-    pointer-events: none;
-    opacity: 0;
-    transform: translate3d(-50%, -50%, 0);
-    transition: opacity 0.18s var(--ease-out);
-    will-change: transform, opacity;
+  /* Custom site cursor — replaces the system arrow with a palette-matched
+     ring + dot (default) and a warm highlight ring on interactive elements. */
+  html,
+  body,
+  .exp-item,
+  .skill-chip {
+    cursor: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2728%27%20height=%2728%27%20viewBox=%270%200%2028%2028%27%3E%3Ccircle%20cx=%2714%27%20cy=%2714%27%20r=%278%27%20fill=%27none%27%20stroke=%27%23191714%27%20stroke-opacity=%270.55%27%20stroke-width=%271.5%27/%3E%3Ccircle%20cx=%2714%27%20cy=%2714%27%20r=%272.6%27%20fill=%27%234A7C59%27/%3E%3C/svg%3E") 14 14, auto;
   }
 
-  .cursor-orb {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle, rgba(224,120,72,0.22) 0%, rgba(224,120,72,0.08) 38%, transparent 72%);
-    mix-blend-mode: multiply;
-    filter: blur(1px);
-  }
-
-  .cursor-ring {
-    width: 38px;
-    height: 38px;
-    border: 1px solid rgba(26,21,18,0.34);
-    border-radius: 50%;
-  }
-
-  .cursor-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  body.cursor-active .cursor-orb,
-  body.cursor-active .cursor-ring,
-  body.cursor-active .cursor-dot {
-    opacity: 1;
-  }
-
-  body.cursor-hover .cursor-ring {
-    width: 58px;
-    height: 58px;
-    border-color: rgba(200,93,48,0.62);
-  }
-
-  body.cursor-hover .cursor-dot {
-    opacity: 0.38;
+  a,
+  button,
+  [role="button"],
+  summary,
+  .deal-deck-card,
+  .deck-icon-btn,
+  .deck-side-btn,
+  .deck-slide-frame img,
+  .work-card-link {
+    cursor: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2732%27%20height=%2732%27%20viewBox=%270%200%2032%2032%27%3E%3Ccircle%20cx=%2716%27%20cy=%2716%27%20r=%2711%27%20fill=%27%234A7C59%27%20fill-opacity=%270.10%27%20stroke=%27%23B66A3C%27%20stroke-width=%271.5%27/%3E%3Ccircle%20cx=%2716%27%20cy=%2716%27%20r=%273%27%20fill=%27%23B66A3C%27/%3E%3C/svg%3E") 16 16, pointer;
   }
 
   img { max-width: 100%; display: block; }
@@ -675,7 +642,6 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: var(--sp-64);
-    cursor: default;
   }
 
   .exp-item:last-child { border-bottom: 1px solid var(--border); }
@@ -778,16 +744,16 @@
     overflow: hidden;
     padding: 0;
     text-align: left;
-    cursor: pointer;
     transition: transform var(--dur-fast) var(--ease-out),
                 border-color var(--dur-fast) var(--ease-out),
                 background var(--dur-fast) var(--ease-out);
   }
 
   .deal-deck-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     border-color: rgba(200,93,48,0.32);
     background: var(--snow);
+    box-shadow: 0 14px 32px rgba(25,23,20,0.10);
   }
 
   .deal-deck-cover {
@@ -800,7 +766,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.55s var(--ease-out);
+    will-change: transform;
   }
+
+  .deal-deck-card:hover .deal-deck-cover img { transform: scale(1.05); }
 
   .deal-deck-copy {
     padding: var(--sp-16);
@@ -880,7 +850,6 @@
     color: var(--snow);
     display: inline-grid;
     place-items: center;
-    cursor: pointer;
     transition: background var(--dur-fast) var(--ease-out),
                 border-color var(--dur-fast) var(--ease-out);
   }
@@ -912,7 +881,7 @@
   }
 
   .deck-slide-frame img {
-    cursor: pointer;
+    cursor: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2732%27%20height=%2732%27%20viewBox=%270%200%2032%2032%27%3E%3Ccircle%20cx=%2716%27%20cy=%2716%27%20r=%2711%27%20fill=%27%234A7C59%27%20fill-opacity=%270.10%27%20stroke=%27%23B66A3C%27%20stroke-width=%271.5%27/%3E%3Ccircle%20cx=%2716%27%20cy=%2716%27%20r=%273%27%20fill=%27%23B66A3C%27/%3E%3C/svg%3E") 16 16, pointer;
   }
 
   .deck-side-btn {
@@ -947,28 +916,65 @@
   .selected-work-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
+    gap: var(--sp-16);
     margin-top: var(--sp-48);
   }
 
   .work-card {
     background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     padding: var(--sp-40);
     display: flex;
     flex-direction: column;
     min-height: 340px;
     position: relative;
     overflow: hidden;
+    transition: transform 0.35s var(--ease-out),
+                box-shadow 0.35s var(--ease-out),
+                border-color 0.35s var(--ease-out),
+                background-color var(--dur-fast) var(--ease-out);
   }
+
+  /* animated top accent that sweeps in on hover */
+  .work-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--accent);
+    transition: width var(--dur) var(--ease-out);
+  }
+
+  .work-card--featured::after { background: var(--accent-warm); }
+  .work-card:hover::after { width: 100%; }
+
+  .work-card:hover {
+    background: var(--bg-mid);
+    transform: translateY(-6px);
+    border-color: rgba(74,124,89,0.35);
+    box-shadow: 0 22px 48px rgba(25,23,20,0.13);
+  }
+  .work-card--featured:hover {
+    background: #24412F;
+    border-color: rgba(182,106,60,0.45);
+    box-shadow: 0 28px 62px rgba(20,45,32,0.40);
+  }
+
+  .work-card:hover .work-card-title { color: var(--accent); }
+  .work-card--featured:hover .work-card-title { color: var(--snow); }
 
   .work-card--featured {
     background: var(--bg-dark);
     color: var(--snow);
     grid-row: span 2;
+  }
+
+  .work-card--wide {
+    grid-column: 1 / -1;
+    min-height: auto;
   }
 
   .work-card-label {
@@ -991,6 +997,7 @@
     letter-spacing: -0.01em;
     color: var(--ink);
     margin-bottom: var(--sp-16);
+    transition: color var(--dur-fast) var(--ease-out);
   }
 
   .work-card--featured .work-card-title { color: var(--snow); }
@@ -1032,6 +1039,34 @@
     object-fit: cover;
   }
 
+  .work-card-visual--split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-16);
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .work-shot {
+    display: block;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 8px;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.25);
+  }
+
+  .work-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.7s var(--ease-out);
+    will-change: transform;
+  }
+
+  .work-card--featured:hover .work-shot img { transform: scale(1.07); }
+
   .work-card-actions {
     margin-top: auto;
     padding-top: var(--sp-24);
@@ -1067,12 +1102,26 @@
 
   .work-deck-list .deal-deck-card {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 150px 1fr;
     background: var(--bg);
   }
 
   .work-deck-list .deal-deck-cover {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: auto;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-mid);
+    padding: var(--sp-8);
+  }
+
+  .work-deck-list .deal-deck-cover img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
   }
 
   .work-deck-list .deal-deck-copy {
@@ -1282,7 +1331,6 @@
     padding: 6px 14px;
     border-radius: 3px;
     transition: all var(--dur-fast) var(--ease-out);
-    cursor: default;
   }
 
   .skill-chip:hover {
@@ -1465,6 +1513,7 @@
     .project-card--featured { padding: var(--sp-40) var(--sp-32); }
     .work-card { padding: var(--sp-32); min-height: auto; }
     .work-card--featured { grid-row: auto; }
+    .work-card-visual--split { grid-template-columns: 1fr; }
     .work-deck-list .deal-deck-card { grid-template-columns: 1fr; }
 
     .skills-layout,
@@ -1491,7 +1540,6 @@
       <li><a href="#selected-work">Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1571,8 +1619,9 @@
           <span class="project-tag">Monte Carlo</span>
           <span class="project-tag">DeepSeek</span>
         </div>
-        <div class="work-card-visual">
-          <img src="assets/projects/biomarket-tracker-screenshot.png" alt="BioMarket Tracker dashboard screenshot" width="1254" height="620" loading="lazy">
+        <div class="work-card-visual work-card-visual--split">
+          <span class="work-shot"><img src="assets/projects/biomarket-welcome.png" alt="BioMarket Tracker welcome screen with analytics overview" width="1280" height="801" loading="lazy"></span>
+          <span class="work-shot"><img src="assets/projects/biomarket-analysis.png" alt="BioMarket Tracker company intelligence and latest news view for PFE" width="1280" height="800" loading="lazy"></span>
         </div>
         <div class="work-card-actions">
           <a href="https://runze-bio-market-tracker.streamlit.app/" target="_blank" rel="noopener" class="work-card-link">
@@ -1628,6 +1677,19 @@
               <div class="deal-deck-meta">Venture pitch · investment thesis · product moat · valuation summary</div>
             </div>
           </button>
+        </div>
+      </article>
+
+      <article class="work-card work-card--wide reveal reveal-delay-5">
+        <div class="work-card-label">CASE 04 · KNOWLEDGE BASE</div>
+        <h3 class="work-card-title">HKUST Course Wiki</h3>
+        <p class="work-card-desc">
+          Curated Obsidian knowledge base — 26+ interconnected pages across 9 courses, with LaTeX-formatted notes and structured study guides for ISOM, FINA, and LIFS.
+        </p>
+        <div class="work-card-meta">
+          <span class="project-tag">Obsidian</span>
+          <span class="project-tag">LaTeX</span>
+          <span class="project-tag">Markdown</span>
         </div>
       </article>
     </div>
@@ -1714,29 +1776,6 @@
             <span class="tag">Healthcare IB</span>
             <span class="tag">Due Diligence</span>
           </div>
-          <div class="deal-decks">
-            <div class="deal-decks-title">Selected Deal Decks</div>
-            <div class="deal-deck-grid">
-              <button class="deal-deck-card" type="button" data-deck="wuxi">
-                <div class="deal-deck-cover">
-                  <img src="assets/decks/haoyue-wuxi-slide-01.jpg" alt="WuXi XDC and TOT BIOPHARM deal deck cover" loading="lazy" width="1280" height="720">
-                </div>
-                <div class="deal-deck-copy">
-                  <div class="deal-deck-name">WuXi XDC / TOT BIOPHARM</div>
-                  <div class="deal-deck-meta">M&amp;A case deck · transaction overview · buyer logic · deal structure</div>
-                </div>
-              </button>
-              <button class="deal-deck-card" type="button" data-deck="sino">
-                <div class="deal-deck-cover">
-                  <img src="assets/decks/haoyue-sino-slide-01.jpg" alt="Sino Biopharmaceutical and HYGieia deal deck cover" loading="lazy" width="1280" height="720">
-                </div>
-                <div class="deal-deck-copy">
-                  <div class="deal-deck-name">Sino Biopharmaceutical / HYGieia</div>
-                  <div class="deal-deck-meta">M&amp;A case deck · strategic rationale · target fit · earn-out structure</div>
-                </div>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1756,20 +1795,6 @@
             <span class="tag">Venture Capital</span>
             <span class="tag">Pitch Deck</span>
             <span class="tag">Cross-functional</span>
-          </div>
-          <div class="deal-decks">
-            <div class="deal-decks-title">Selected Pitch Deck</div>
-            <div class="deal-deck-grid">
-              <button class="deal-deck-card" type="button" data-deck="vcoc">
-                <div class="deal-deck-cover">
-                  <img src="assets/decks/vcoc-agilis-slide-01.jpg" alt="Agilis investment memo pitch deck cover" loading="lazy" width="1280" height="720">
-                </div>
-                <div class="deal-deck-copy">
-                  <div class="deal-deck-name">Agilis Investment Memo</div>
-                  <div class="deal-deck-meta">Venture pitch · investment thesis · product moat · valuation summary</div>
-                </div>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -1793,83 +1818,6 @@
         <div class="exp-body">
           <div class="exp-title">Student Helper</div>
           <div class="exp-role">HKUST Undergraduate Admissions Office</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Projects -->
-<section class="section section--warm" id="projects">
-  <div class="section-inner">
-    <p class="section-eyebrow reveal">Projects</p>
-    <h2 class="section-title reveal reveal-delay-1">What I <em>build.</em></h2>
-
-    <div class="projects-grid">
-
-      <!-- Featured -->
-      <a href="https://runze-bio-market-tracker.streamlit.app/" target="_blank" rel="noopener"
-         class="project-card project-card--featured reveal reveal-delay-2">
-        <div class="project-eyebrow">Featured Project · Live</div>
-        <h3 class="project-title">BioMarket Tracker</h3>
-        <p class="project-desc">
-          AI-driven biotech equity analysis platform with Monte Carlo simulation engine,
-          real-time DeepSeek research reports, and interactive risk-reward visualizations.
-        </p>
-        <div class="project-metrics">
-          <div>
-            <span class="project-metric-val">5,000+</span>
-            <span class="project-metric-lbl">Monte Carlo iterations</span>
-          </div>
-          <div>
-            <span class="project-metric-val">rNPV</span>
-            <span class="project-metric-lbl">risk-adjusted valuation</span>
-          </div>
-        </div>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Streamlit</span>
-          <span class="project-tag">NumPy / Pandas</span>
-          <span class="project-tag">Plotly</span>
-          <span class="project-tag">DeepSeek API</span>
-          <span class="project-tag">Monte Carlo</span>
-        </div>
-        <span class="project-link">
-          Launch App
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M7 17L17 7M7 7h10v10"/>
-          </svg>
-        </span>
-      </a>
-
-      <!-- VCOC -->
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-eyebrow">Investment</div>
-        <h3 class="project-title">VCOC Investment Challenge</h3>
-        <p class="project-desc">
-          Tech-driven investment thesis: led product due diligence and cross-functional
-          strategy for a Top 10 finish (90 teams). Pitched to VCs at HKSTP Capital semifinals.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Venture Capital</span>
-          <span class="project-tag">Due Diligence</span>
-          <span class="project-tag">Pitch Design</span>
-        </div>
-      </div>
-
-      <!-- HKUST Wiki -->
-      <div class="project-card reveal reveal-delay-4">
-        <div class="project-eyebrow">Knowledge</div>
-        <h3 class="project-title">HKUST Course Wiki</h3>
-        <p class="project-desc">
-          Curated Obsidian knowledge base: 26+ interconnected pages covering 9 courses,
-          with LaTeX-formatted notes and structured study guides for ISOM, FINA, and LIFS.
-        </p>
-        <div class="project-tags">
-          <span class="project-tag">Obsidian</span>
-          <span class="project-tag">LaTeX</span>
-          <span class="project-tag">Markdown</span>
         </div>
       </div>
 
@@ -2249,68 +2197,4 @@
     event.stopPropagation();
     changeDeckSlide(-1);
   });
-  document.getElementById('deckNextSide').addEventListener('click', event => {
-    event.stopPropagation();
-    changeDeckSlide(1);
-  });
-  deckSlide.addEventListener('click', () => changeDeckSlide(1));
-  deckModal.addEventListener('click', event => {
-    if (event.target === deckModal) closeDeck();
-  });
-  window.addEventListener('keydown', event => {
-    if (!activeDeck) return;
-    if (event.key === 'Escape') closeDeck();
-    if (event.key === 'ArrowLeft') changeDeckSlide(-1);
-    if (event.key === 'ArrowRight') changeDeckSlide(1);
-  });
-
-  /* ── Mouse effect preview ── */
-  const canUseMouseEffect = window.matchMedia('(pointer: fine)').matches &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (canUseMouseEffect) {
-    const orb = document.createElement('div');
-    const ring = document.createElement('div');
-    const dot = document.createElement('div');
-    orb.className = 'cursor-orb';
-    ring.className = 'cursor-ring';
-    dot.className = 'cursor-dot';
-    document.body.append(orb, ring, dot);
-
-    const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    const orbPos = { ...mouse };
-    const ringPos = { ...mouse };
-
-    window.addEventListener('pointermove', (event) => {
-      mouse.x = event.clientX;
-      mouse.y = event.clientY;
-      document.body.classList.add('cursor-active');
-    }, { passive: true });
-
-    window.addEventListener('pointerleave', () => {
-      document.body.classList.remove('cursor-active');
-    });
-
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('pointerenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('pointerleave', () => document.body.classList.remove('cursor-hover'));
-    });
-
-    function renderCursor() {
-      orbPos.x += (mouse.x - orbPos.x) * 0.08;
-      orbPos.y += (mouse.y - orbPos.y) * 0.08;
-      ringPos.x += (mouse.x - ringPos.x) * 0.22;
-      ringPos.y += (mouse.y - ringPos.y) * 0.22;
-
-      orb.style.transform = `translate3d(${orbPos.x - 90}px, ${orbPos.y - 90}px, 0)`;
-      ring.style.transform = `translate3d(${ringPos.x - 19}px, ${ringPos.y - 19}px, 0)`;
-      dot.style.transform = `translate3d(${mouse.x - 3.5}px, ${mouse.y - 3.5}px, 0)`;
-      requestAnimationFrame(renderCursor);
-    }
-
-    renderCursor();
-  }
-</script>
-
-</body>
-</html>
+  document.getElementById('deckNextSide').addEventListener('cli
