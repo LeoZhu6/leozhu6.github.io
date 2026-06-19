@@ -21,19 +21,19 @@
      ============================================ */
   :root {
     /* Colors */
-    --bg:           #FAF8F4;
-    --bg-warm:      #F2EDE4;
-    --bg-dark:      #2E2820;
-    --bg-mid:       #EDE8DF;
-    --ink:          #1A1512;
-    --ink-60:       rgba(26,21,18,0.60);
-    --ink-40:       rgba(26,21,18,0.40);
-    --ink-20:       rgba(26,21,18,0.12);
-    --accent:       #C85D30;
-    --accent-warm:  #E07848;
-    --accent-dim:   rgba(200,93,48,0.12);
+    --bg:           #FAF8F2;
+    --bg-warm:      #F1ECE2;
+    --bg-dark:      #25251F;
+    --bg-mid:       #E8E0D3;
+    --ink:          #191714;
+    --ink-60:       rgba(25,23,20,0.62);
+    --ink-40:       rgba(25,23,20,0.42);
+    --ink-20:       rgba(25,23,20,0.12);
+    --accent:       #4A7C59;
+    --accent-warm:  #B66A3C;
+    --accent-dim:   rgba(74,124,89,0.12);
     --snow:         #ffffff;
-    --border:       rgba(26,21,18,0.12);
+    --border:       rgba(25,23,20,0.12);
 
     /* Typography */
     --serif:  'Playfair Display', 'Georgia', 'Times New Roman', serif;
@@ -154,6 +154,12 @@
   }
 
   img { max-width: 100%; display: block; }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
 
   /* ============================================
      Nav
@@ -1305,6 +1311,13 @@
     .contact-layout { grid-template-columns: 1fr; }
 
     .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
 </head>
