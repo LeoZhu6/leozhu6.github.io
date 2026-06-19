@@ -334,6 +334,10 @@
     animation: fade-up 0.9s var(--ease) 0.55s forwards;
   }
 
+  .hero-stats--proof {
+    flex-wrap: wrap;
+  }
+
   .hero-stat {
     min-width: 96px;
   }
@@ -345,6 +349,11 @@
     line-height: 1;
     color: var(--ink);
     display: block;
+  }
+
+  .hero-stats--proof .hero-stat-val {
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.08;
   }
 
   .hero-stat-val[data-count] {
@@ -1341,33 +1350,37 @@
 <!-- Hero -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="hero-label">HKUST Business School · Class of 2029</p>
+    <p class="hero-label">HKUST Business School · Finance × BioEngineering</p>
     <h1 class="hero-title">
-      Hello, I'm<br>
-      <em>Runze Zhu.</em>
+      Biotech finance,<br>
+      <em>translated into investable insight.</em>
     </h1>
     <p class="hero-sub">
-      Building at the intersection of finance and biotechnology —
-      investment banking, biotech valuation, and AI-driven analytics.
+      I study Finance &amp; BioEngineering at HKUST and build AI-driven research workflows
+      for biotech markets, healthcare investing, and platform strategy.
     </p>
-    <div class="hero-stats">
+    <div class="hero-stats hero-stats--proof">
       <div class="hero-stat">
-        <span class="hero-stat-val" data-count="3.86" data-decimals="2">3.86</span>
-        <span class="hero-stat-lbl">GPA / 4.3</span>
+        <span class="hero-stat-val">HKUST BBA</span>
+        <span class="hero-stat-lbl">Finance × BioEngineering</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-val">Dean's List</span>
-        <span class="hero-stat-lbl">Academic Award</span>
+        <span class="hero-stat-val">Healthcare IB</span>
+        <span class="hero-stat-lbl">Haoyue Capital</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-val" data-count="105" data-decimals="0">105</span>
-        <span class="hero-stat-lbl">TOEFL Score</span>
+        <span class="hero-stat-val">Top 10 / 90</span>
+        <span class="hero-stat-lbl">VCOC Investment Challenge</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">Live Product</span>
+        <span class="hero-stat-lbl">BioMarket Tracker</span>
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#experience" class="btn-primary">View experience</a>
+      <a href="#selected-work" class="btn-primary">View selected work</a>
       <a href="https://runze-bio-market-tracker.streamlit.app/" target="_blank" rel="noopener" class="btn-text">
-        Live project
+        Launch BioMarket Tracker
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M7 17L17 7M7 7h10v10"/>
         </svg>
