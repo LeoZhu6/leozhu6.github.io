@@ -942,6 +942,149 @@
   }
 
   /* ============================================
+     Selected Work
+     ============================================ */
+  .selected-work-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: var(--sp-48);
+  }
+
+  .work-card {
+    background: var(--bg-warm);
+    padding: var(--sp-40);
+    display: flex;
+    flex-direction: column;
+    min-height: 340px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-card--featured {
+    background: var(--bg-dark);
+    color: var(--snow);
+    grid-row: span 2;
+  }
+
+  .work-card-label {
+    font-family: var(--sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--sp-16);
+  }
+
+  .work-card--featured .work-card-label { color: var(--accent-warm); }
+
+  .work-card-title {
+    font-family: var(--serif);
+    font-size: clamp(var(--text-xl), 3.6vw, var(--text-2xl));
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: var(--sp-16);
+  }
+
+  .work-card--featured .work-card-title { color: var(--snow); }
+
+  .work-card-desc {
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ink-60);
+  }
+
+  .work-card--featured .work-card-desc { color: rgba(255,255,255,0.58); }
+
+  .work-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-8);
+    margin-top: var(--sp-24);
+  }
+
+  .work-card--featured .project-tag {
+    color: rgba(255,255,255,0.50);
+    border-color: rgba(255,255,255,0.14);
+  }
+
+  .work-card-visual {
+    margin-top: var(--sp-32);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.25);
+  }
+
+  .work-card-visual img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .work-card-actions {
+    margin-top: auto;
+    padding-top: var(--sp-24);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-12);
+  }
+
+  .work-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--sans);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--accent-warm);
+    text-decoration: none;
+  }
+
+  .work-card-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .work-card-link:hover svg { transform: translate(2px, -2px); }
+
+  .work-deck-list {
+    display: grid;
+    gap: var(--sp-12);
+    margin-top: var(--sp-24);
+  }
+
+  .work-deck-list .deal-deck-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    background: var(--bg);
+  }
+
+  .work-deck-list .deal-deck-cover {
+    aspect-ratio: 4 / 3;
+  }
+
+  .work-deck-list .deal-deck-copy {
+    padding: var(--sp-12) var(--sp-16);
+  }
+
+  .work-deck-list .deal-deck-name {
+    font-size: var(--text-base);
+    margin-bottom: 4px;
+  }
+
+  /* ============================================
      Projects
      ============================================ */
   .projects-grid {
@@ -1313,8 +1456,12 @@
     .edu-row { grid-template-columns: 1fr; }
     .edu-date { margin-top: var(--sp-8); }
 
-    .projects-grid { grid-template-columns: 1fr; }
+    .projects-grid,
+    .selected-work-grid { grid-template-columns: 1fr; }
     .project-card--featured { padding: var(--sp-40) var(--sp-32); }
+    .work-card { padding: var(--sp-32); min-height: auto; }
+    .work-card--featured { grid-row: auto; }
+    .work-deck-list .deal-deck-card { grid-template-columns: 1fr; }
 
     .skills-layout,
     .contact-layout { grid-template-columns: 1fr; }
