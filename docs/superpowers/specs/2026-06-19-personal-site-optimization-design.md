@@ -491,15 +491,15 @@ Phase 4: Verification
 7. Check browser console for JS errors.
 8. Run Lighthouse or browser performance check if available.
 
-## 19. Open Decisions Before Implementation
+## 19. Confirmed Implementation Decisions
 
-These decisions should be confirmed before editing `index.html`:
+Confirmed by user on 2026-06-19:
 
-1. Correct GPA value to display everywhere.
-2. Whether to add GitHub link for BioMarket Tracker.
-3. Whether LinkedIn should be added to Contact.
-4. Whether Tencent Ads content should remain high-level only.
-5. Whether to use the recommended green/copper palette or keep the current orange accent.
+1. GPA/CGA source: use the attached resume/transcript as the factual source. Current HKUST CGA shown there is `3.856 / 4.3`. Avoid mixing `3.86`, `3.856`, and older values across sections.
+2. BioMarket Tracker links: use the live website link only. Do not add a GitHub link for this project.
+3. Contact: add LinkedIn if the LinkedIn URL is available. The attached resume PDF does not include a LinkedIn URL, so request the exact URL before implementing that link.
+4. Tencent Ads: keep content high-level only. Do not write specific/confidential project details.
+5. Visual direction: proceed with the recommended biotech sage green + muted copper palette.
 
 ## 20. Success Criteria
 
