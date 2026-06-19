@@ -497,7 +497,7 @@ Confirmed by user on 2026-06-19:
 
 1. GPA/CGA source: use the attached resume/transcript as the factual source. Current HKUST CGA shown there is `3.856 / 4.3`. Avoid mixing `3.86`, `3.856`, and older values across sections.
 2. BioMarket Tracker links: use the live website link only. Do not add a GitHub link for this project.
-3. Contact: add LinkedIn if the LinkedIn URL is available. The attached resume PDF does not include a LinkedIn URL, so request the exact URL before implementing that link.
+3. Contact: add LinkedIn using `https://www.linkedin.com/in/runze-zhu-8143b4380/`.
 4. Tencent Ads: keep content high-level only. Do not write specific/confidential project details.
 5. Visual direction: proceed with the recommended biotech sage green + muted copper palette.
 
