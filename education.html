@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Runze Zhu is an HKUST BBA in Finance student with an Additional Major in BioEngineering (BIEN), building AI-driven biotech market analytics tools and working across healthcare investment banking, venture research, and platform strategy.">
+<meta property="og:title" content="Runze Zhu — Biotech Finance Builder">
+<meta property="og:description" content="Finance, biotechnology, and AI-driven research workflows — from healthcare M&A case decks to BioMarket Tracker.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leozhu6.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Runze Zhu — Biotech Finance Builder">
+<meta name="twitter:description" content="HKUST BBA in Finance student with an Additional Major in BioEngineering (BIEN), building at the intersection of biotech finance and AI analytics.">
+<title>Runze Zhu — Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300;400;450;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Runze Zhu</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-btn">Get in touch</a>
+  </div>
+</nav>
+<main style="padding-top: 72px;">
+<!-- Education -->
+<section class="section section--warm" id="education">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">Education</p>
+    <h2 class="section-title reveal reveal-delay-1">Where I <em>learn.</em></h2>
+
+    <div class="edu-grid">
+      <div class="edu-row reveal reveal-delay-2">
+        <div>
+          <div class="edu-school">Hong Kong University of Science and Technology</div>
+          <div class="edu-degree">BBA in Finance · Additional Major in BioEngineering (BIEN) · Hong Kong</div>
+          <div class="edu-note">CGA: <strong>3.856 / 4.3</strong> — Dean's List.<br>
+            Core coursework: Financial Management, Business Analytics, General Biology, Financial Accounting.</div>
+          <div>
+            <span class="tag">Dean's List</span>
+            <span class="tag">BBA in Finance</span>
+            <span class="tag">Additional Major in BIEN</span>
+            <span class="tag">Business Analytics</span>
+          </div>
+        </div>
+        <div class="edu-date">Sep 2025 – May 2029</div>
+      </div>
+
+      <div class="edu-row reveal reveal-delay-3">
+        <div>
+          <div class="edu-school">Hanyang University</div>
+          <div class="edu-degree">International Winter School · Seoul, South Korea (Online)</div>
+          <div class="edu-note">GPA: <strong>3.0 / 3.0</strong> (A+)</div>
+        </div>
+        <div class="edu-date">Winter 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-text">© 2026 Runze Zhu (Leo) · Shanghai &amp; Hong Kong</p>
+    <p class="footer-text">
+      <a href="https://hkust.edu.hk" target="_blank" rel="noopener">HKUST</a>
+      &nbsp;·&nbsp;
+      <a href="https://runze-bio-market-tracker.streamlit.app/" target="_blank" rel="noopener">BioMarket Tracker</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/runze-zhu-8143b4380/" target="_blank" rel="noopener">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/LeoZhu6" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  const revealObserver = new IntersectionObserver(
+    entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    }),
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 20
+      ? 'rgba(250,248,244,0.96)'
+      : 'rgba(250,248,244,0.88)';
+  }, { passive: true });
+
+  document.querySelectorAll('.skills-layout, .contact-layout').forEach(grid => {
+    Array.from(grid.children).forEach((child, i) => {
+      if (!child.classList.contains('reveal')) {
+        child.classList.add('reveal', `reveal-delay-${Math.min(i + 1, 5)}`);
+        revealObserver.observe(child);
+      }
+    });
+  });
+</script>
+</body>
+</html>
